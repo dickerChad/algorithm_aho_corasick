@@ -1,0 +1,1 @@
+# Algorithme de recherche d'Aho-Corasick
