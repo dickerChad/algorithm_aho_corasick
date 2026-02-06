@@ -1,0 +1,17 @@
+# --- Exécutables et fichiers objets ---
+*.o
+*.obj
+*.out
+*.exe
+venv/
+
+
+data/
+
+resultats/
+
+.vscode/
+.idea/
+Makefile.app
+build/
+dist/

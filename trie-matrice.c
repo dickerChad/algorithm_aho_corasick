@@ -93,6 +93,7 @@ void construireSuppleants(TrieMatrice* trie) {
 
 long long rechercherMotsMatrice(TrieMatrice* trie, const unsigned char* texte, long longueur) {
     long long compteur = 0;
+    long long nb_matches = 0;  // Compte le nombre de positions où on trouve quelque chose
     NoeudMatrice* etat = trie->racine;
     
     for (long i = 0; i < longueur; i++) {
@@ -108,9 +109,17 @@ long long rechercherMotsMatrice(TrieMatrice* trie, const unsigned char* texte, l
         
         if (etat->nb_mots_finissant > 0) {
             compteur += etat->nb_mots_finissant;
+            nb_matches++;
+            
+            // DEBUG : affiche les 10 premiers matches
+            if (nb_matches <= 10) {
+                fprintf(stderr, "Match à position %ld: +%d occurrences (total=%lld)\n", 
+                        i, etat->nb_mots_finissant, compteur);
+            }
         }
     }
     
+    fprintf(stderr, "Total positions avec match: %lld\n", nb_matches);
     return compteur;
 }
 
